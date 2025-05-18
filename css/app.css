@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+}
+
+.title-h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+.board {
+    /* background-color: thistle; */
+    justify-items: center;
+    font-size: 17px;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 100px;
+}
+
+.cell {
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+}
+
+.footer {
+    background-color: rgb(103, 208, 208);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    margin: auto;
+    margin-top: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
