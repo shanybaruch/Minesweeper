@@ -27,6 +27,7 @@ body {
     background-color: rgb(0, 0, 0);
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .footer {
@@ -49,16 +50,29 @@ body {
 }
 
 .mine-opens {
-    opacity: 0.6;
+    /* opacity: 0.6; */
+    background-color: red;
 }
 
 .mood-smiley {
     font-size: 25px;
     display: inline-block;
+    cursor: pointer;
 }
 
-.hints {
+.hint {
     margin: auto;
     margin: 10px;
     display: inline-block;
+    cursor: pointer;
+
+}
+
+.on-hint {
+background-color: rgb(251, 255, 165);
+color: black;
+}
+
+.cell:hover {
+    background-color: rgb(71, 71, 71);
 }
