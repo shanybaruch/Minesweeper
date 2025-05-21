@@ -9,11 +9,19 @@
 <body onload="onInit()">
     <h1 class="title-h1">Minesweeper</h1>
 
-    <div class="hint" onclick="onHint(this)"></div>
+    <div class="container">
+    <div class="levels">
+    <button class="level beginner" onclick="whatLevel(this)">Beginner</button>
+    <button class="level medium" onclick="whatLevel(this)">Medium</button>
+    <button class="level expert" onclick="whatLevel(this)">Expert</button>
+    </div>
+    <div class="seconds-counter">0</div>
+    <div class="hint" onclick="onHint()"></div>
     <div class="mood-smiley" onclick="onInit()"></div>
     <div class="lives"></div>
 
-    <div class="board">
+    <div class="board"></div>
+    <div class="best-score">best score: <span></span></div>
     </div>
     
     <div class="footer">Shany Baruch</div>
