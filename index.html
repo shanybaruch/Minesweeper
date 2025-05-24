@@ -6,22 +6,30 @@
     <link rel="stylesheet" href="css/app.css">
     <title>Minesweeper</title>
 </head>
-<body onload="onInit()">
+<body class="light-mode" onload="onInit()">
     <h1 class="title-h1">Minesweeper</h1>
 
-    <div class="container">
+    <div class="container light-mode">
     <div class="levels">
+
+    <button class="change-mode-btn light-mode" onclick="changeMode(this)">⚫</button>
+
     <button class="level beginner" onclick="onLevelClicked(this)">Beginner</button>
     <button class="level medium" onclick="onLevelClicked(this)">Medium</button>
     <button class="level expert" onclick="onLevelClicked(this)">Expert</button>
+
     </div>
+
     <div class="seconds-counter">0</div>
     <div class="hint" onclick="onHint()"></div>
     <div class="mood-smiley" onclick="onInit()"></div>
+
     <div class="lives"></div>
 
     <div class="board"></div>
+
     <div class="best-score">best score: <span></span></div>
+
     </div>
     
     <div class="footer">Shany Baruch</div>
