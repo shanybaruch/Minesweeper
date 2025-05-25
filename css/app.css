@@ -1,7 +1,7 @@
 body {
     text-align: center;
     transition: 0.3s;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 body.light-mode {
@@ -9,21 +9,85 @@ body.light-mode {
     transition: 0.3s;
 }
 
-.title-h1 {
-    text-align: center;
-    color: white;
+body.light-mode .title-h1 {
+    color: rgb(255, 255, 255);
+    font-family: cursive;
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title-h1 {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: cursive;
+    font-weight: 800;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btns-bottom {
+    margin-top: 20px;
+}
+
+
+.safe-click {
+    background-color: rgb(120, 203, 255);
+    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.undo {
+    background-color: rgb(141, 255, 210);
+    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.mega-hint {
+    background-color: rgb(225, 168, 255);
+    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.exterminator {
+    background-color: rgb(255, 175, 160);
+    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.manually-create {
+    background-color: rgb(255, 247, 129);
+    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
 }
 
 .container {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    padding: 20px;
-    width: 40%;
+    padding: 10px;
+    width: 60%;
+    height: 80vh;
     margin: auto;
     transition: 0.3s;
-
 }
 
 .board {
@@ -32,38 +96,22 @@ body.light-mode {
     font-size: 14px;
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 10px;
+    height: 55vh;
 }
 
 .cell {
     margin: 5px;
     width: 30px;
     height: 30px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(220, 220, 220);
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    /* font-weight: 600; */
-    box-shadow: 1px 2px 2px 1px rgb(157, 157, 157);
+    box-shadow: 1px 2px 2px 1px rgb(136, 136, 136);
 }
 
 .cell:hover {
     opacity: 0.7;
-}
-
-.footer {
-    /* background-color: rgb(58, 58, 58); */
-    color: rgb(0, 0, 0);
-    /* background-color: antiquewhite; */
-    padding: 3px;
-    font-size: 14px;
-    width: 100px;
-    font-weight: 700;
-    margin: 10px auto;
-    width: 100px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 2px;
-    /* text-shadow: 1px 1px 1px rgb(158, 158, 158); */
 }
 
 .lives {
@@ -73,10 +121,11 @@ body.light-mode {
 
 .mine-open {
     background-color: red;
+    transition: 0.2s;
 }
 
 .mood-smiley {
-    font-size: 25px;
+    font-size: 24px;
     display: inline-block;
     cursor: pointer;
 }
@@ -97,33 +146,25 @@ body.light-mode {
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    background-color: black;
-    color: white;
+    color: rgb(156, 156, 156);
     padding: 5px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .best-score {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 20px;
-    font-weight: 600;
+    font-family: serif;
+    font-weight: 900;
+    font-size: 20px;
 }
 
 .level {
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 10px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
     margin: auto;
     border: 0;
-    cursor: pointer;
     background-color: transparent;
-}
-
-.levels {
-    display: block;
-    padding: 10px;
 }
 
 .hide {
@@ -131,19 +172,20 @@ body.light-mode {
 }
 
 .zero {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
 .one {
-    background-color: blue;
+    background-color: rgb(0, 102, 255);
 }
 
 .two {
-    background-color: green;
+    background-color: rgb(0, 224, 0);
 }
 
 .three {
-    background-color: red;
+    background-color: rgb(214, 0, 0);
 }
 
 .four {
@@ -171,7 +213,6 @@ body.light-mode {
     font-size: 20px;
     background-color: transparent;
     text-align: left;
-    cursor: pointer;
     display: flex;
     margin: -10px;
 }
