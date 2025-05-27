@@ -3,24 +3,21 @@ body {
     transition: 0.3s;
     background-color: rgb(0, 0, 0);
 }
-
 body.light-mode {
     background-color: rgb(219, 219, 219);
     transition: 0.3s;
 }
-
-body.light-mode .title-h1 {
-    color: rgb(255, 255, 255);
-    font-family: cursive;
-    font-size: 30px;
-}
-
 .title-h1 {
     font-size: 30px;
     text-align: center;
     color: rgb(255, 255, 255);
     font-family: cursive;
     font-weight: 800;
+}
+body.light-mode .title-h1 {
+    color: rgb(255, 255, 255);
+    font-family: cursive;
+    font-size: 30px;
 }
 
 .btn {
@@ -29,51 +26,44 @@ body.light-mode .title-h1 {
     border: 0;
     border-radius: 5px;
 }
-
 .btns-bottom {
     margin-top: 20px;
 }
-
-
 .safe-click {
     background-color: rgb(120, 203, 255);
-    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     padding: 10px;
     margin: 5px;
     color: white;
     font-weight: bold;
 }
-
 .undo {
     background-color: rgb(141, 255, 210);
-    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     padding: 10px;
     margin: 5px;
     color: white;
     font-weight: bold;
 }
-
 .mega-hint {
     background-color: rgb(225, 168, 255);
-    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     padding: 10px;
     margin: 5px;
     color: white;
     font-weight: bold;
 }
-
 .exterminator {
     background-color: rgb(255, 175, 160);
-    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     padding: 10px;
     margin: 5px;
     color: white;
     font-weight: bold;
 }
-
 .manually-create {
     background-color: rgb(255, 247, 129);
-    box-shadow: 1px 1px 1px 1px rgb(192, 192, 192);
+    box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     padding: 10px;
     margin: 5px;
     color: white;
@@ -89,6 +79,10 @@ body.light-mode .title-h1 {
     margin: auto;
     transition: 0.3s;
 }
+
+/* body.light-mode .container {
+    background-color: white;
+} */
 
 .board {
     margin: auto;
@@ -109,7 +103,6 @@ body.light-mode .title-h1 {
     cursor: pointer;
     box-shadow: 1px 2px 2px 1px rgb(136, 136, 136);
 }
-
 .cell:hover {
     opacity: 0.7;
 }
