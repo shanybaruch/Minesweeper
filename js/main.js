@@ -10,6 +10,7 @@ var gBestScoreMedium = Infinity
 var gBestScoreExpert = Infinity
 var gMegaHintFirst = null
 var gMegaHintSecond = null
+var gLastClick = []
 
 var gLevel = {
     SIZE: 4,
@@ -66,6 +67,7 @@ function whatLevel(elLevel) {
         gGame.level = 'beginner'
         gLevel.SIZE = 4
         gLevel.MINES = 2
+        gGame.lives = 1
     } else if (elLevel.classList.contains('medium')) {
         gGame.level = 'medium'
         gLevel.SIZE = 8
@@ -199,13 +201,21 @@ function randomMinesLocation(cellI, cellJ) {
 }
 
 function onCellClicked(elCell, i, j) {
+    // console.log(elCell);
+    // console.log(gBoard[i][j]);
+    var cell = gBoard[i][j]
+
+    if (gBoard[i][j].isRevealed || gBoard[i][j].isMarked) return
 
     if (gGame.isOn) {
 
         if (!gGame.megaHintMode) {
 
+            gLastClick.push([{ i, j }])
 
-            // console.log(elCell);
+            // console.log('Clicked cell count:', gBoard[i][j].minesAroundCount)
+
+            console.log(gLastClick);
 
             elCell.classList.remove('close')
             if (!gHintMode) {
@@ -237,7 +247,10 @@ function onCellClicked(elCell, i, j) {
                 } else {
                     elCell.innerText = gBoard[i][j].minesAroundCount
                     uniqueColorForNum(elCell, i, j)
-                    if (gBoard[i][j].minesAroundCount === 0) {
+                    // console.log(gLastClick);
+
+
+                    if (gBoard[i][j].minesAroundCount === 0 && !gGame.firstClick) {
                         uniqueColorForNum(elCell, i, j)
                         neighborsExpand(i, j)
                     }
@@ -365,16 +378,23 @@ function drawMineCell(cellI, cellJ) {
 }
 
 function neighborsExpand(i, j) {
+    var arrCells = []
     for (var ii = i - 1; ii <= i + 1; ii++) {
         for (var jj = j - 1; jj <= j + 1; jj++) {
+
             if (ii < 0 || ii >= gBoard.length || jj < 0 || jj >= gBoard[0].length) continue
-            var elCell = document.querySelector(`.cell-${ii}-${jj}`)
             if (ii === i && jj === j) continue
+            if (gBoard[ii][jj].isRevealed || gBoard[ii][jj].isMarked) continue;
+
+            var elCell = document.querySelector(`.cell-${ii}-${jj}`)
 
             uniqueColorForNum(elCell, ii, jj)
             elCell.innerText = gBoard[ii][jj].minesAroundCount
             elCell.classList.remove('close')
             elCell.classList.add('open')
+            gLastClick[gLastClick.length - 1].push({ i: ii, j: jj })
+            // console.log(arrCells);
+
 
             if (gBoard[ii][jj].isRevealed && gBoard[ii][jj].minesAroundCount === 0) continue
             if (!gBoard[ii][jj].isRevealed && gBoard[ii][jj].minesAroundCount === 0) {
@@ -383,8 +403,11 @@ function neighborsExpand(i, j) {
             }
             gBoard[ii][jj].isRevealed = true
             gGame.revealedCount++
+            // console.log(arrCells);
+
         }
     }
+    // console.log(gLastClick);
 }
 
 //render lives
@@ -409,7 +432,7 @@ function renderSmiley() {
     }
 }
 
-//make on
+//make on hint
 function onHint() {
     gHintMode = true
 }
@@ -530,8 +553,11 @@ function resetClicks() {
     gGame.firstClick = true
     gGame.mood = '😃'
     gGame.hints = 3
-    gGame.lives = 3
     gGame.megaHintMode = false
+    gLastClick = []
+    if (gGame.level === 'beginner') gGame.lives = 1
+    else if (gGame.level === 'medium') gGame.lives = 2
+    else gGame.lives = 3
 
     gGame.safeClicks = 3
     var btnSafeClick = document.querySelector('.safe-click')
@@ -574,7 +600,20 @@ function onSafeClicked(btn) {
 }
 
 function onUndoClicked() {
+    // console.log(gLastClick)
 
+    var lastClick = gLastClick.pop()
+    if (!lastClick) return
+
+    for (var i = 0; i < lastClick.length; i++) {
+
+        var cell = lastClick[i]
+        var elCell = document.querySelector(`.cell-${cell.i}-${cell.j}`)
+
+        console.log(elCell);
+
+        undoArrCells(elCell, cell.i, cell.j)
+    }
 }
 
 function onMegaHintClicked() {
@@ -612,4 +651,43 @@ function megaHint() {
     }
 
     if (gGame.megaHint === 0) btnMegaHint.style.opacity = 0.3
+}
+
+function undoArrCells(elCell, i, j) {
+    // console.log(elCell)
+
+    if (elCell.classList.contains('zero') ||
+        elCell.classList.contains('one') ||
+        elCell.classList.contains('two') ||
+        elCell.classList.contains('three') ||
+        elCell.classList.contains('four') ||
+        elCell.classList.contains('five') ||
+        elCell.classList.contains('six') ||
+        elCell.classList.contains('seven') ||
+        elCell.classList.contains('eight')
+    ) {
+        elCell.classList.remove('zero') ||
+            elCell.classList.remove('one') ||
+            elCell.classList.remove('two') ||
+            elCell.classList.remove('three') ||
+            elCell.classList.remove('four') ||
+            elCell.classList.remove('five') ||
+            elCell.classList.remove('six') ||
+            elCell.classList.remove('seven') ||
+            elCell.classList.remove('eight')
+    }
+
+    elCell.innerText = ''
+    elCell.classList.remove('open')
+    elCell.classList.add('close')
+
+    gBoard[i][j].isRevealed = false
+
+
+    gGame.revealedCount--
+    // console.log(elCell);
+}
+
+function onExterminatorClicked() {
+    
 }
